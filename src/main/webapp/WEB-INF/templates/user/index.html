@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body>
-Index
+<table>
+    <thead>
+    <tr>
+        <th> Username </th>
+        <th> Email </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${users.empty}">
+        <td colspan="2"> No users exists </td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.username}"> Username </span></td>
+        <td><span th:text="${user.email}"> Email </span></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

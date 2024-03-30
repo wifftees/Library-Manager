@@ -1,22 +1,27 @@
 package org.bugriy.libraryManager.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class UserDAO {
-    // mock database
-    public static final List<User> users = new ArrayList<>();
-    static {
-        users.add(new User(1, "Test", "test@gmail.com"));
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public UserDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
+
     public User getUserById(final int id) {
-        return users.get(0);
+        // return users.get(0);
+        return null;
     }
 
     public List<User> index() {
-        return users;
+        return jdbcTemplate.query("SELECT * FROM user_", new BeanPropertyRowMapper<>(User.class));
     }
 }
