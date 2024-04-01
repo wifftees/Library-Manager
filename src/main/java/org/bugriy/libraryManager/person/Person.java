@@ -1,12 +1,12 @@
-package org.bugriy.libraryManager.user;
+package org.bugriy.libraryManager.person;
 
-public class User {
+public class Person {
     private int id;
     private String username;
     private String email;
 
-    public User() {}
-    public User(final int id, final String username, final String email) {
+    public Person() {}
+    public Person(final int id, final String username, final String email) {
         this.id = id;
         this.username = username;
         this.email = email;

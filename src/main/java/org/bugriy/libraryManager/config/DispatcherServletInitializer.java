@@ -1,23 +1,20 @@
 package org.bugriy.libraryManager.config;
 
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRegistration;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class DispatcherServletInitializer implements WebApplicationInitializer {
+public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(AppConfig.class);
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 
-        ServletRegistration.Dynamic registration = servletContext.addServlet(
-                "dispatcher", new DispatcherServlet(rootContext)
-        );
-        registration.setLoadOnStartup(1);
-        registration.addMapping("/");
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[0];
+    }
 
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{AppConfig.class};
     }
 }

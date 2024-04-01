@@ -13,12 +13,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${users.empty}">
+    <tr th:if="${people.empty}">
         <td colspan="2"> No users exists </td>
     </tr>
-    <tr th:each="user : ${users}">
-        <td><span th:text="${user.username}"> Username </span></td>
-        <td><span th:text="${user.email}"> Email </span></td>
+    <tr th:each="person : ${people}">
+        <td><span th:text="${person.username}"> Username </span></td>
+        <td><span th:text="${person.email}"> Email </span></td>
     </tr>
     </tbody>
 </table>

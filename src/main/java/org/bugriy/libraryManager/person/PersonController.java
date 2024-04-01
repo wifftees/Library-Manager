@@ -1,4 +1,4 @@
-package org.bugriy.libraryManager.user;
+package org.bugriy.libraryManager.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/users")
-public class UserController {
-    private final UserService userService;
+@RequestMapping("/people")
+public class PersonController {
+    private final PersonService personService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
     @GetMapping("/{id}")
     public String getUser(@PathVariable("id") final int id, final Model model) {
-        userService.getUserById(id);
-        return "user/index";
+        personService.getUserById(id);
+        return "person/index";
     }
 
     @GetMapping()
     public String index(final Model model) {
-        model.addAttribute("users", userService.index());
-        return "user/index";
+        model.addAttribute("people", personService.index());
+        return "person/index";
     }
 }
