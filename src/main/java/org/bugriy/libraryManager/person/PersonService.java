@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonService {
@@ -14,8 +15,8 @@ public class PersonService {
         this.personDAO = personDAO;
     }
 
-    public Person getUserById(final int id) {
-        return personDAO.getUserById(id);
+    public Optional<Person> getPersonById(final int id) {
+        return personDAO.getPersonById(id);
     }
 
     public List<Person> index() {
