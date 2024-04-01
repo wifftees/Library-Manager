@@ -1,2 +1,3 @@
 # Library-Manager
-// TODO
+Simple CRUD application with Spring-MVC (without Spring-Boot), JdbcTemplate.
+
