@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -21,6 +22,10 @@ public class BookService {
 
     public List<Book> getAvailableBooks() {
         return bookDAO.getBooksWithoutUserId();
+    }
+
+    public Optional<Book> getBookById(final int id) {
+        return bookDAO.getBookById(id);
     }
 
 }
